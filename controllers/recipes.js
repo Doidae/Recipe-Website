@@ -4,23 +4,21 @@ const Recipe = require('../models/recipes.js')
 
 //Index Page
 recipes.get('/', (req, res) => {
-    // Recipe.find()
-    //     .then(foundRecipe => {
-    //         res.render('index', {
-    //             recipes: foundRecipe
-    //         })
-    //     })
-    res.send("Recipe Index Page")
+    Recipe.find()
+        .then(foundRecipe => {
+            res.render('index', {
+                recipe: foundRecipe
+            })
+        })
 })
 
 recipes.get('/new', (req, res) => {
-    // Recipe.find()
-    //     .then(foundRecipe => {
-    //         res.render('new', {
-    //             recipes: foundRecipe
-    //         })
-    //     })
-    res.send("Recipe New Page")
+    Recipe.find()
+        .then(foundRecipe => {
+            res.render('new', {
+                recipes:foundRecipe
+            })
+        })
 }) //TODO: DOUBLE CHECK THIS ROUTE LATER
 
 recipes.delete('/:id', (req, res) => {
@@ -42,7 +40,7 @@ recipes.get('/:id', (req, res) => {
     // Recipe.findById(req.params.id)
     //     .then(foundRecipe => {
     //         res.render('show', {
-    //             recipes: foundRecipe
+    //             recipe: foundRecipe
     //         })
     //     })
     //     .catch(err => {
