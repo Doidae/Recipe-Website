@@ -35,6 +35,16 @@ recipes.put('/:id', (req,res) =>{
     //     })
 })
 
+//EDIT
+recipes.get('/:id/edit', (req,res) => {
+    Recipe.findById(req.params.id)
+        .then(foundRecipe => {
+            res.render('edit', {
+                recipe:foundRecipe
+            })
+        })
+})
+
 //SHOW
 recipes.get('/:id', (req, res) => {
     // Recipe.findById(req.params.id)

@@ -5,7 +5,8 @@ function New ({}) {
     return(
         <Default>
             <h2>Add A New Recipe</h2>
-            <form action="/recipes">Name
+            <form action="/recipes">
+                <label htmlFor='name'>Name</label>
                 <input
                     type="text"
                     name="name"
@@ -21,7 +22,7 @@ function New ({}) {
                     <br />
                 <input type='submit'/>
             </form>
-            <div>
+            <div className='backButton'>
                 <a href='/recipes'><button>Return</button></a>
             </div>
         </Default>

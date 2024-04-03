@@ -14,7 +14,7 @@ app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true}).then(
-    () => console.log('connected to mongo: Database')
+    () => console.log('connected to the database!~')
     )
 //ROUTES
 app.get('/', (req,res) =>{
