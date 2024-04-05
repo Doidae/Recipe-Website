@@ -4,7 +4,7 @@ const Default = require('./layouts/default');
 function Index({ recipes }) {
     return (
         <Default>
-            <h2>Index Page</h2>
+            <h2>Home</h2>
             <ul>
                 {recipes && recipes.map((recipe, index) => (
                     <li key={index}>

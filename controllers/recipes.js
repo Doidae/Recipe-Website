@@ -60,11 +60,20 @@ recipes.get('/:id', (req, res) => {
 
 //CREATE
 recipes.post('/', (req, res) =>{
-    // if(!req.body.image) {
-    //     req.body.image = undefined
-    // }
-    // Recipe.create(req.body)
-    // res.redirect('/recipes')
+    const { title, ingredients, instructions } = req.body;
+
+    const recipe = new Recipe({
+        title,
+        ingredients,
+        instructions
+    });
+
+    recipe.save()
+        .then(() => res.json(recipe))
+        .catch(err => {
+            console.error('Error saving recipe to database:', err);
+            res.status(500).send('Error saving recipe to database');
+        });
 })
 
 module.exports = recipes

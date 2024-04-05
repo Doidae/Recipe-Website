@@ -5,20 +5,37 @@ function New ({}) {
     return(
         <Default>
             <h2>Add A New Recipe</h2>
-            <form action="/recipes">
-                <label htmlFor='name'>Name</label>
+            <form action="/recipes" method='POST'>
+                <label htmlFor='title'>Name</label>
                 <input
                     type="text"
-                    name="name"
-                    id="name"
+                    name="title"
+                    id="title"
+                    placeholder='Name....'
                     required
                 />
                 <label htmlFor="image">Image</label>
-                    <input
-                        type="text"
-                        name="image"
-                        id="image"
-                    />
+                <input
+                    type="text"
+                    name="image"
+                    id="image"
+                />
+                <label htmlFor='ingredients'>Ingredients</label>
+                <input 
+                    type="text"
+                    name='ingredients'
+                    id='ingredients'
+                    placeholder='Ingredients...'
+                    required
+                />
+                <label htmlFor='instructions'>Instructions</label>
+                <input 
+                    type="text"
+                    name='instructions'
+                    id='instructions'
+                    placeholder='List Instructioins...'
+                    required
+                />
                     <br />
                 <input type='submit'/>
             </form>
