@@ -12,6 +12,7 @@ recipes.get('/', (req, res) => {
         })
 })
 
+//NEW
 recipes.get('/new', (req, res) => {
     Recipe.find()
         .then(foundRecipe => {
@@ -68,10 +69,11 @@ recipes.get('/:id', (req, res) => {
 
 //CREATE
 recipes.post('/', (req, res) =>{
-    const { title, ingredients, instructions } = req.body;
+    const { title, image, ingredients, instructions } = req.body;
 
     const recipe = new Recipe({
         title,
+        image,
         ingredients,
         instructions
     });

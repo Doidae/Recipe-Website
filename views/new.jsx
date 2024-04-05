@@ -19,6 +19,8 @@ function New ({}) {
                     type="text"
                     name="image"
                     id="image"
+                    accept="image/*"
+                    required
                 />
                 <label htmlFor='ingredients'>Ingredients</label>
                 <input 
