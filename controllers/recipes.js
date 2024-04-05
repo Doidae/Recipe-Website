@@ -22,18 +22,25 @@ recipes.get('/new', (req, res) => {
 }) //TODO: DOUBLE CHECK THIS ROUTE LATER
 
 recipes.delete('/:id', (req, res) => {
-    // Recipe.findByIdAndDelete(req.params.id)
-    //     .then(deletedRecipe =>{
-    //         res.status(303).redirect('/recipes')
-    // })
+    Recipe.findByIdAndDelete(req.params.id)
+        .then(deletedRecipe =>{
+            res.status(303).redirect('/recipes')
+    })
 })
 
 recipes.put('/:id', (req,res) =>{
-    // Recipe.findByIdAndUpdate(req.params.id, req.body, {new: true})
-    //     .then(updateRecipe => {
-    //         console.log(updateRecipe)
-    //     })
-})
+    Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        .then(updateRecipe => {
+            if (!updateRecipe) {
+                return res.status(404).send('Recipe not found');
+            }
+            res.redirect('/recipes/' + req.params.id);
+        })
+        .catch(err => {
+            console.error('Error updating recipe:', err);
+            res.status(500).send('Error updating recipe');
+        });
+});
 
 //EDIT
 recipes.get('/:id/edit', (req,res) => {
@@ -47,16 +54,17 @@ recipes.get('/:id/edit', (req,res) => {
 
 //SHOW
 recipes.get('/:id', (req, res) => {
-    // Recipe.findById(req.params.id)
-    //     .then(foundRecipe => {
-    //         res.render('show', {
-    //             recipe: foundRecipe
-    //         })
-    //     })
-    //     .catch(err => {
-    //         res.send('404')
-    //     })
-})
+    Recipe.findById(req.params.id)
+        .then(foundRecipe => {
+            res.render('show', {
+                recipe: foundRecipe
+            })
+        })
+        .catch(err => {
+            res.send('404')
+        })
+    })
+
 
 //CREATE
 recipes.post('/', (req, res) =>{
