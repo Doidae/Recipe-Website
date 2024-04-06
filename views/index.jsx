@@ -1,19 +1,23 @@
 const React = require('react');
 const Default = require('./layouts/default');
 
-function Index({ recipes }) {
+function Index({ recipe }) {
     return (
         <Default>
             <h2>Home</h2>
             <ul>
-                {recipes && recipes.map((recipe, index) => (
-                    <li key={index}>
-                        <a href={`/recipes/${recipe.id}`}>
-                            {recipe.name}
-                        </a>
-                    </li>
-                ))}
+                <div className="card">
+                    {recipe && recipe.map((recipe, index) => (
+                        <li key={index}>
+                            <img src={recipe.image} className='card-img-top' alt={recipe.title}></img>
+                            <a href={`/recipes/${recipe.id}`}>
+                                {recipe.title}
+                            </a>
+                        </li>
+                    ))}
+                </div>
             </ul>
+            <a href={`/recipes/new`}><button>Add a new Recipe</button></a>
         </Default>
     );
 }
