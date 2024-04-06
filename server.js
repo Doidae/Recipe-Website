@@ -21,7 +21,7 @@ app.get('/', (req,res) =>{
     res.send('Welcome to MY recipe app')
 })
 
-const recipeController = require('./controllers/recipes.js')
+const recipeController = require('./controllers/recipesController.js')
 app.use('/recipes', recipeController)
 
 app.listen(PORT, () => {
